@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:layout_height="match_parent"
+		tools:context=".activity.set.SetActivity">
+
+	<include layout="@layout/layout_custom_toolbar"/>
+
+	<RelativeLayout
+			style="@style/set_item"
+			android:id="@+id/setUpdatePwd">
+		<TextView style="@style/text_333_16"
+		          android:text="修改密码"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<RelativeLayout style="@style/set_item"
+	                android:id="@+id/setBingWeChat">
+		<TextView style="@style/text_333_16"
+		          android:text="绑定微信"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<RelativeLayout style="@style/set_item"
+	                android:background="@android:color/white">
+		<TextView style="@style/text_333_16"
+		          android:text="服务协议"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<RelativeLayout style="@style/set_item"
+	                android:id="@+id/setAboutUs">
+		<TextView style="@style/text_333_16"
+		          android:text="关于我们"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<RelativeLayout style="@style/set_item"
+	                android:id="@+id/setVersion">
+		<TextView style="@style/text_333_16"
+		          android:text="版本号"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<RelativeLayout style="@style/set_item"
+	                android:id="@+id/setLogOut">
+		<TextView style="@style/text_333_16"
+		          android:text="退出登录"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+</LinearLayout>

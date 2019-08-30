@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+	<include layout="@layout/layout_custom_toolbar"/>
+	<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="match_parent"
+		              android:orientation="vertical"
+		              android:id="@+id/layoutContent">
+
+			<RelativeLayout android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:paddingTop="13dp"
+			                android:paddingBottom="13dp"
+			                android:paddingLeft="12dp"
+			                android:paddingRight="12dp"
+			                android:background="@android:color/white">
+				<TextView
+						style="@style/text_333_16"
+						android:text="头像"
+						android:layout_centerVertical="true"/>
+				<ImageView style="@style/head_view_style"
+				           android:layout_marginLeft="71dp"/>
+				<ImageView style="@style/arrow_gray_16dp"
+				           android:layout_centerVertical="true"
+				           android:layout_alignParentRight="true"/>
+			</RelativeLayout>
+			<View style="@style/hLine"/>
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:paddingTop="13dp"
+			              android:paddingBottom="13dp"
+			              android:paddingLeft="12dp"
+			              android:background="@android:color/white"
+			              android:paddingRight="12dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*医生姓名"/>
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:background="@null"
+				          android:layout_marginLeft="30dp"
+				          android:text="张医生"
+				          android:textColor="#ff999999"
+				          android:textSize="16sp"/>
+			</LinearLayout>
+			<View style="@style/hLine"/>
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:paddingTop="13dp"
+			              android:background="@android:color/white"
+			              android:paddingBottom="13dp"
+			              android:paddingLeft="12dp"
+			              android:paddingRight="12dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*性别"/>
+				<FrameLayout android:layout_width="wrap_content"
+				             android:layout_marginLeft="76dp"
+				             android:layout_marginRight="23dp"
+				             android:layout_height="wrap_content">
+					<LinearLayout android:layout_width="42dp"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:id="@+id/layoutUserInfoMan"
+					              android:gravity="center_horizontal">
+						<ImageView android:layout_width="42dp"
+						           android:layout_height="42dp"
+						           android:src="@drawable/icon_man"/>
+						<TextView android:layout_width="wrap_content"
+						          android:layout_height="wrap_content"
+						          android:text="男"
+						          android:layout_marginTop="6dp"
+						          android:textColor="#ff36cfc9"
+						          android:textSize="10sp"
+						          android:id="@+id/txtUserInfoMan"/>
+					</LinearLayout>
+					<ImageView android:layout_width="20dp"
+					           android:layout_height="20dp"
+					           android:id="@+id/imgUserInfoCheckedMan"
+					           android:src="@drawable/icon_checked"
+					           android:layout_marginLeft="31dp"/>
+				</FrameLayout>
+
+				<FrameLayout android:layout_width="wrap_content"
+				             android:layout_height="wrap_content">
+					<LinearLayout android:layout_width="42dp"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:id="@+id/layoutUserInfoWoMen"
+					              android:gravity="center_horizontal">
+						<ImageView android:layout_width="42dp"
+						           android:layout_height="42dp"
+						           android:src="@drawable/icon_women"/>
+						<TextView android:layout_width="wrap_content"
+						          android:layout_height="wrap_content"
+						          android:text="女"
+						          android:layout_marginTop="6dp"
+						          android:textColor="#ff333333"
+						          android:textSize="10sp"
+						          android:id="@+id/txtUserInfoWoMen"/>
+					</LinearLayout>
+					<ImageView android:layout_width="20dp"
+					           android:layout_height="20dp"
+					           android:id="@+id/imgUserInfoCheckedWoMen"
+					           android:src="@drawable/icon_checked"
+					           android:visibility="invisible"
+					           android:layout_marginLeft="31dp"/>
+				</FrameLayout>
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:paddingTop="13dp"
+			              android:paddingBottom="13dp"
+			              android:paddingLeft="12dp"
+			              android:background="@android:color/white"
+			              android:paddingRight="12dp"
+			              android:layout_marginTop="8dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*诊所名称"/>
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:background="@null"
+				          android:layout_marginLeft="30dp"
+				          android:text="诊所名称"
+				          android:textColor="#ff999999"
+				          android:textSize="16sp"/>
+			</LinearLayout>
+			<View style="@style/hLine"/>
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:paddingTop="13dp"
+			              android:paddingBottom="13dp"
+			              android:paddingLeft="12dp"
+			              android:gravity="center_vertical"
+			              android:background="@android:color/white"
+			              android:paddingRight="12dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*诊所地址"/>
+				<TextView android:layout_width="0dp"
+				          android:layout_height="wrap_content"
+				          android:background="@null"
+				          android:layout_marginLeft="30dp"
+				          android:text="诊所地址"
+				          android:layout_weight="1"
+				          android:textColor="#ff999999"
+				          android:textSize="16sp"/>
+				<ImageView style="@style/arrow_gray_16dp"/>
+			</LinearLayout>
+			<View style="@style/hLine"/>
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:paddingTop="13dp"
+			              android:paddingBottom="13dp"
+			              android:paddingLeft="12dp"
+			              android:background="@android:color/white"
+			              android:paddingRight="12dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*详细地址"/>
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:background="@null"
+				          android:layout_marginLeft="30dp"
+				          android:text="详细地址"
+				          android:textColor="#ff999999"
+				          android:textSize="16sp"/>
+			</LinearLayout>
+
+			<RelativeLayout android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:paddingTop="13dp"
+			                android:paddingBottom="13dp"
+			                android:paddingLeft="12dp"
+			                android:background="@android:color/white"
+			                android:paddingRight="12dp"
+			                android:layout_marginTop="8dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*上传医疗机构执业许可证"
+						android:layout_centerVertical="true"/>
+				<ImageView android:layout_width="69dp"
+				           android:layout_height="50dp"
+				           android:background="#E7E7E7"
+				           android:layout_toLeftOf="@+id/imgArrowImageOne"
+				           android:layout_marginRight="30dp"/>
+				<ImageView style="@style/arrow_gray_16dp"
+				           android:layout_alignParentRight="true"
+				           android:layout_centerVertical="true"
+				           android:id="@+id/imgArrowImageOne"/>
+			</RelativeLayout>
+			<View style="@style/hLine"/>
+			<RelativeLayout android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:paddingTop="13dp"
+			                android:paddingBottom="13dp"
+			                android:paddingLeft="12dp"
+			                android:background="@android:color/white"
+			                android:paddingRight="12dp">
+				<TextView
+						style="@style/text_333_16"
+						android:text="*上传门店照片"
+						android:layout_centerVertical="true"/>
+				<ImageView android:layout_width="69dp"
+				           android:layout_height="50dp"
+				           android:background="#E7E7E7"
+				           android:layout_marginRight="30dp"
+				           android:layout_toLeftOf="@+id/imgArrowImageTwo"/>
+				<ImageView style="@style/arrow_gray_16dp"
+				           android:layout_alignParentRight="true"
+				           android:layout_centerVertical="true"
+				           android:id="@+id/imgArrowImageTwo"/>
+			</RelativeLayout>
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+	<Button android:layout_width="match_parent"
+	        android:layout_height="50dp"
+	        android:layout_margin="12dp"
+	        android:text="提交审核"
+	        android:textColor="#ffffffff"
+	        android:textSize="18sp"
+	        android:background="@drawable/shape_36cfc9_radius25"
+	        android:id="@+id/userInfoBtnSubmit"/>
+</LinearLayout>

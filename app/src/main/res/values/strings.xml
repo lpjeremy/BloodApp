@@ -1,0 +1,12 @@
+<resources>
+	<string name="app_name">BloodApp</string>
+
+	<string name="title_home">首页</string>
+	<string name="title_order">订单</string>
+	<string name="title_report">报告</string>
+	<string name="title_mine">我的</string>
+	<string name="set">设置</string>
+	<string name="user_info">个人资料</string>
+	<string name="account_flow">账户流水</string>
+	<string name="goods_info">商品详情</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--dialog顶部title背景色-->
+    <color name="dialog_title_bg">#5c799d</color>
+
+</resources>

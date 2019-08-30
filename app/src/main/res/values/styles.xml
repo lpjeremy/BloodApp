@@ -1,0 +1,54 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:windowFullscreen">true</item>
+		<item name="android:windowBackground">@color/bg</item>
+	</style>
+
+	<!--设置界面样式 start-->
+	<style name="set_item">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">50dp</item>
+		<item name="android:paddingLeft">12dp</item>
+		<item name="android:paddingRight">12dp</item>
+		<item name="android:background">@android:color/white</item>
+		<item name="android:layout_marginTop">8dp</item>
+	</style>
+	<style name="arrow_gray_16dp">
+		<item name="android:layout_width">16dp</item>
+		<item name="android:layout_height">16dp</item>
+		<item name="android:src">@drawable/icon_arrow_gray</item>
+	</style>
+	<style name="text_333_16">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">#ff333333</item>
+
+	</style>
+	<!--设置界面样式 end-->
+
+	<style name="head_view_style">
+		<item name="android:layout_width">50dp</item>
+		<item name="android:layout_height">50dp</item>
+		<item name="android:src">@drawable/head_default</item>
+	</style>
+	<!--横线样式-->
+	<style name="hLine">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">0.5dp</item>
+		<item name="android:background">#E7E7E7</item>
+
+	</style>
+	<style name="vLine">
+		<item name="android:layout_width">0.5dp</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:background">#E7E7E7</item>
+
+	</style>
+</resources>
