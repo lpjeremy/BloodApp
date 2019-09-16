@@ -6,7 +6,12 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.hysyyl.bloodapp.activity.adapters.viewholder.OrderViewHolder
 import com.hysyyl.bloodapp.model.Order
-
+/**
+ * @desc:订单列表数据适配器
+ * @date:2019/9/16 14:04
+ * @auther:lp
+ * @version:1.1.6
+ */
 class OrderListAdapter : PagedListAdapter<Order, OrderViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         return OrderViewHolder(parent)

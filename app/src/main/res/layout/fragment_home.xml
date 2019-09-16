@@ -1,136 +1,162 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="vertical"
-             android:gravity="center">
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent" android:layout_height="match_parent"
+             android:descendantFocusability="blocksDescendants">
 
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+			android:id="@+id/homeSwipeRefreshLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+		<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+		                                       android:layout_height="wrap_content"
+		                                       android:scrollbars="none">
 
-	<ImageView android:layout_width="match_parent"
-	           android:layout_height="200dp"
-	           android:background="@drawable/home_head_bg"/>
-
-	<LinearLayout android:layout_width="match_parent"
-	              android:layout_height="match_parent"
-	              android:orientation="vertical"
-	              android:paddingLeft="12dp"
-	              android:paddingRight="12dp">
-		<RelativeLayout android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:orientation="horizontal"
-		                android:layout_marginTop="20dp">
-			<ImageView android:layout_width="20dp"
-			           android:layout_height="20dp"
-			           android:src="@drawable/icon_scan"/>
-			<ImageView android:layout_width="20dp"
-			           android:layout_height="20dp"
-			           android:src="@drawable/icon_call_service"
-			           android:layout_alignParentRight="true"/>
-
-		</RelativeLayout>
-
-		<RelativeLayout android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:layout_marginTop="110dp"
-		                android:background="@drawable/white_bg_radius8"
-		                android:paddingTop="16dp"
-		                android:paddingBottom="16dp"
-		                android:paddingLeft="15dp"
-		                android:paddingRight="15dp">
-			<LinearLayout android:layout_width="wrap_content"
+			<LinearLayout android:layout_width="match_parent"
 			              android:layout_height="wrap_content"
-			              android:orientation="vertical"
-			              android:layout_marginLeft="10dp"
-			              android:gravity="center">
-				<ImageView android:layout_width="50dp"
-				           android:layout_height="50dp"
-				           android:src="@drawable/icon_xd"
-				           android:layout_marginBottom="10dp"/>
-				<TextView android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:text="下单"/>
-			</LinearLayout>
-
-			<LinearLayout android:layout_width="wrap_content"
-			              android:layout_height="wrap_content"
-			              android:orientation="vertical"
-			              android:layout_centerHorizontal="true"
-			              android:gravity="center">
-				<ImageView android:layout_width="50dp"
-				           android:layout_height="50dp"
-				           android:src="@drawable/icon_xd"
-				           android:layout_marginBottom="10dp"/>
-				<TextView android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:text="看报告"/>
-			</LinearLayout>
-
-			<LinearLayout android:layout_width="wrap_content"
-			              android:layout_height="wrap_content"
-			              android:orientation="vertical"
-			              android:layout_alignParentRight="true"
-			              android:layout_marginRight="10dp"
-			              android:gravity="center">
-				<ImageView android:layout_width="50dp"
-				           android:layout_height="50dp"
-				           android:src="@drawable/icon_xd"
-				           android:layout_marginBottom="10dp"/>
-				<TextView android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:text="买券"/>
-			</LinearLayout>
-
-		</RelativeLayout>
-
-		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-				android:id="@+id/homeSwipeRefreshLayout"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_alignParentStart="true">
-			<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
 			              android:orientation="vertical">
-				<LinearLayout android:layout_width="match_parent"
-				              android:layout_height="wrap_content"
-				              android:orientation="vertical"
-				              android:layout_marginTop="18dp">
-					<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-						<View android:layout_width="72dp"
-						      android:layout_height="6dp"
-						      android:background="#5CDBD3"
-						      android:layout_gravity="bottom"/>
-						<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-						          android:text="最新活动"
-						          android:textColor="#ff333333"
-						          android:textSize="18sp"/>
-					</FrameLayout>
+				<FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 					<ImageView android:layout_width="match_parent"
-					           android:layout_height="119dp"
-					           android:background="@drawable/img_advert"
-					           android:layout_marginTop="20dp"
-					           android:id="@+id/imgGoodsInfo"/>
-				</LinearLayout>
-				<LinearLayout android:layout_width="match_parent"
-				              android:layout_height="wrap_content"
+					           android:layout_height="200dp"
+					           android:background="@drawable/home_head_bg"/>
+					<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:paddingLeft="12dp"
+					              android:paddingRight="12dp">
+
+						<RelativeLayout android:layout_width="match_parent"
+						                android:layout_height="wrap_content"
+						                android:orientation="horizontal"
+						                android:layout_marginTop="20dp">
+							<ImageView android:layout_width="20dp"
+							           android:layout_height="20dp"
+							           android:src="@drawable/icon_scan"/>
+							<ImageView android:layout_width="20dp"
+							           android:layout_height="20dp"
+							           android:src="@drawable/icon_call_service"
+							           android:layout_alignParentRight="true"/>
+
+						</RelativeLayout>
+
+						<RelativeLayout android:layout_width="match_parent"
+						                android:layout_height="wrap_content"
+						                android:layout_marginTop="110dp"
+						                android:background="@drawable/white_bg_radius8"
+						                android:paddingTop="16dp"
+						                android:paddingBottom="16dp"
+						                android:paddingLeft="15dp"
+						                android:paddingRight="15dp">
+							<LinearLayout android:layout_width="wrap_content"
+							              android:layout_height="wrap_content"
+							              android:orientation="vertical"
+							              android:layout_marginLeft="10dp"
+							              android:gravity="center">
+								<ImageView android:layout_width="50dp"
+								           android:layout_height="50dp"
+								           android:src="@drawable/icon_xd"
+								           android:layout_marginBottom="10dp"/>
+								<TextView android:layout_width="wrap_content"
+								          android:layout_height="wrap_content"
+								          android:text="下单"/>
+							</LinearLayout>
+
+							<LinearLayout android:layout_width="wrap_content"
+							              android:layout_height="wrap_content"
+							              android:orientation="vertical"
+							              android:layout_centerHorizontal="true"
+							              android:gravity="center">
+								<ImageView android:layout_width="50dp"
+								           android:layout_height="50dp"
+								           android:src="@drawable/icon_xd"
+								           android:layout_marginBottom="10dp"/>
+								<TextView android:layout_width="wrap_content"
+								          android:layout_height="wrap_content"
+								          android:text="看报告"/>
+							</LinearLayout>
+
+							<LinearLayout android:layout_width="wrap_content"
+							              android:layout_height="wrap_content"
+							              android:orientation="vertical"
+							              android:layout_alignParentRight="true"
+							              android:layout_marginRight="10dp"
+							              android:gravity="center">
+								<ImageView android:layout_width="50dp"
+								           android:layout_height="50dp"
+								           android:src="@drawable/icon_xd"
+								           android:layout_marginBottom="10dp"/>
+								<TextView android:layout_width="wrap_content"
+								          android:layout_height="wrap_content"
+								          android:text="买券"/>
+							</LinearLayout>
+
+						</RelativeLayout>
+
+					</LinearLayout>
+
+				</FrameLayout>
+
+				<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
 				              android:orientation="vertical"
-				              android:layout_marginTop="18dp">
-					<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-						<View android:layout_width="72dp"
-						      android:layout_height="6dp"
-						      android:background="#5CDBD3"
-						      android:layout_gravity="bottom"/>
-						<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-						          android:text="强强组合"
-						          android:textColor="#ff333333"
-						          android:textSize="18sp"/>
-					</FrameLayout>
+				              android:paddingLeft="12dp"
+				              android:paddingRight="12dp">
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:layout_marginTop="18dp">
+						<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+							<View android:layout_width="72dp"
+							      android:layout_height="6dp"
+							      android:background="#5CDBD3"
+							      android:layout_gravity="bottom"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="最新活动"
+							          android:textColor="#ff333333"
+							          android:textSize="18sp"/>
+						</FrameLayout>
+						<ImageView android:layout_width="match_parent"
+						           android:layout_height="119dp"
+						           android:background="@drawable/img_advert"
+						           android:layout_marginTop="12dp"
+						           android:id="@+id/imgGoodsInfo"/>
+					</LinearLayout>
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:layout_marginTop="18dp">
+						<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+						             android:layout_marginBottom="11dp">
+							<View android:layout_width="72dp"
+							      android:layout_height="6dp"
+							      android:background="#5CDBD3"
+							      android:layout_gravity="bottom"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="强强组合"
+							          android:textColor="#ff333333"
+							          android:textSize="18sp"/>
+						</FrameLayout>
 
-					<com.lpjeremy.uimodule.recyclerview.CustomRecyclerView android:layout_width="match_parent"
-					                                                       android:layout_height="wrap_content"
-					                                                       android:id="@+id/homeRecyclerView"/>
+						<androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+						                                           android:layout_height="wrap_content"
+						                                           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						                                           android:id="@+id/homeRecyclerView"/>
+					</LinearLayout>
 				</LinearLayout>
+
+
 			</LinearLayout>
+		</androidx.core.widget.NestedScrollView>
 
-		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
+	<LinearLayout android:layout_width="64dp" android:layout_height="48dp"
+	              android:orientation="horizontal"
+	              android:layout_gravity="bottom"
+	              android:gravity="center_vertical|right"
+	              android:paddingRight="12dp"
+	              android:layout_marginBottom="30dp"
+	              android:background="@drawable/home_cart_bg">
+		<ImageView android:layout_width="38dp"
+		           android:layout_height="38dp"
+		           android:id="@+id/imgHomeCart"
+		           android:src="@drawable/icon_cart"/>
 	</LinearLayout>
 </FrameLayout>

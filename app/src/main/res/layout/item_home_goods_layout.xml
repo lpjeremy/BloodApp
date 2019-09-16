@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="11dp"
+              android:paddingLeft="8dp"
+              android:paddingRight="8dp"
+              android:background="@drawable/white_bg_radius8"
+              android:layout_marginBottom="12dp"
+              android:paddingBottom="10dp">
+	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+	              android:orientation="horizontal"
+	              android:gravity="bottom">
+		<TextView android:layout_width="0dp"
+		          android:layout_weight="1"
+		          android:layout_height="wrap_content"
+		          android:textColor="#ff999999"
+		          android:text="@string/app_name"
+		          android:id="@+id/txtHomeGoodsName"
+		          android:textSize="12sp"/>
+		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		          android:text="@string/app_name"
+		          android:id="@+id/txtHomeGoodsOldPrice"
+		          android:textColor="#ff999999"
+		          android:textSize="10sp"/>
+		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		          android:text="@string/app_name"
+		          android:id="@+id/txtHomeGoodsPrice"
+		          android:textColor="#fffa6400"
+		          android:textSize="16sp"
+		          android:paddingLeft="5dp"/>
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+	              android:orientation="horizontal"
+	              android:layout_marginTop="5dp"
+	              android:layout_marginBottom="13dp">
+		<TextView android:layout_width="0dp"
+		          android:layout_weight="1"
+		          android:layout_height="wrap_content"
+		          android:text="@string/app_name"
+		          android:id="@+id/txtHomeGoodsDescrbe"
+		          android:textColor="#fffb6969"
+		          android:textSize="12sp"/>
+		<TextView android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:text="@string/app_name"
+		          android:id="@+id/txtHomeGoodsMoney"
+		          android:textColor="#ff09bb07"
+		          android:textSize="10sp"/>
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+	              android:orientation="horizontal">
+		<TextView android:layout_width="0dp"
+		          android:layout_weight="1"
+		          android:layout_height="wrap_content"
+		          android:text="@string/app_name"
+		          android:maxLines="2"
+		          android:lineSpacingExtra="5dp"
+		          android:id="@+id/txtHomeGoodsContent"
+		          android:textColor="#ff333333"
+		          android:textSize="13sp"/>
+		<ImageView android:layout_width="20dp"
+		           android:layout_height="20dp"
+		           android:text="@string/app_name"
+		           android:id="@+id/imgHomeAddToCart"
+		           android:src="@drawable/icon_add_cart"/>
+	</LinearLayout>
+
+</LinearLayout>
