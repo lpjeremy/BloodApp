@@ -3,6 +3,7 @@ package com.hysyyl.bloodapp.activity.main.mine
 import android.content.Intent
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.mine.account.AccountFlowActivity
+import com.hysyyl.bloodapp.activity.mine.recharge.RechargeActivity
 import com.hysyyl.bloodapp.activity.mine.userinfo.UserInfoActivity
 import com.hysyyl.bloodapp.activity.set.SetActivity
 import com.hysyyl.bloodapp.model.Account
@@ -30,6 +31,9 @@ class MineFragment : BaseFragment(R.layout.fragment_mine), MineView {
         txtMineBalance.setOnClickListener {
             startActivity(Intent(mContext, AccountFlowActivity::class.java))
         }
+        txtMineRecharge.setOnClickListener {
+            startActivity(Intent(mContext, RechargeActivity::class.java))
+        }
     }
 
     override fun initData() {
@@ -55,10 +59,6 @@ class MineFragment : BaseFragment(R.layout.fragment_mine), MineView {
     override fun setSaler(saler: Saler?) {
         txtMineSalerName?.text = saler?.SalerName
         txtMineSalerPhone?.text = saler?.SalerPhone
-        hideLoading()
-    }
-
-    override fun loadFail(e: APiExceptionKT) {
         hideLoading()
     }
 }

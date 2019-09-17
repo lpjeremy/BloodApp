@@ -51,4 +51,23 @@
 		<item name="android:background">#E7E7E7</item>
 
 	</style>
+	<!--横向的 高度自适应的 内容垂直居中的 linearLayout样式-->
+	<style name="lLayoutHor_hWrap_vCenter">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:orientation">horizontal</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+	<!--横向的 高度自适应的  linearLayout样式-->
+	<style name="lLayoutHor_hWrap">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:orientation">horizontal</item>
+	</style>
+	<!--纵向的 高度自适应的 linearLayout样式-->
+	<style name="lLayoutVer_hWrap">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:orientation">vertical</item>
+	</style>
 </resources>

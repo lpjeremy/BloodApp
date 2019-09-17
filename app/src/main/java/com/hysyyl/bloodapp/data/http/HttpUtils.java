@@ -16,11 +16,12 @@ import java.util.List;
  * @auther:lp
  * @version:1.1.6
  */
-public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, CustomerApi, OrderApi {
+public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, CustomerApi, OrderApi, ReportApi {
     BaseApiService mBaseApiService;
     UserApiService mUserApiService;
     CustomerApiService mCustomerApiService;
     OrderApiService mOrderApiService;
+    ReportApiService mReportApiService;
 
 
     private static class HttpUtilsHolder {
@@ -37,11 +38,13 @@ public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, Cust
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_USER, HttpConfig.URL.USER_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_CUSTOMER, HttpConfig.URL.CUSTOMER_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_ORDER, HttpConfig.URL.ORDER_URL);
+        RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_REPORT, HttpConfig.URL.REPORT_URL);
 
         mBaseApiService = RetrofitUtils.getInstance().createBasicsRetrofit(HttpConfig.URL.BASE_URL).createApiService(BaseApiService.class);
         mUserApiService = RetrofitUtils.getInstance().createApiService(UserApiService.class);
         mCustomerApiService = RetrofitUtils.getInstance().createApiService(CustomerApiService.class);
         mOrderApiService = RetrofitUtils.getInstance().createApiService(OrderApiService.class);
+        mReportApiService = RetrofitUtils.getInstance().createApiService(ReportApiService.class);
     }
 
     @Override
@@ -79,4 +82,8 @@ public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, Cust
         execute(mOrderApiService.getUserOrderList(keyWords, orderStatus, pageIndex, pageSize), callBack);
     }
 
+    @Override
+    public void loadReportData(String keyWords, int pageIndex, int pageSize, HttpRequestCallBackKT<List<Report>> callBack) {
+        execute(mReportApiService.getReportListData(keyWords, pageIndex, pageSize), callBack);
+    }
 }

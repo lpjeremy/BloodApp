@@ -20,6 +20,8 @@ public interface HttpConfig {
 
         String CUSTOMER_URL = "http://106.14.179.118:9107/";
 
+        String REPORT_URL = "http://106.14.179.118:9113/";
+
 
     }
 
@@ -34,6 +36,7 @@ public interface HttpConfig {
         String getUserSaler = "api/GetMySalerInfo";
         String checkBindWeChat = "api/Login/IsBindWxOpenid";
         String getUserOrderList = "api/Order/GetUserOrderList";
+        String customerReportSearch = "api/CustomerReportSearch";
     }
 
     /**
@@ -44,5 +47,6 @@ public interface HttpConfig {
         String HIS_USER = "HIS_USER";
         String HIS_CUSTOMER = "HIS_CUSTOMER";
         String HIS_ORDER = "HIS_ORDER";
+        String HIS_REPORT = "HIS_REPORT";
     }
 }

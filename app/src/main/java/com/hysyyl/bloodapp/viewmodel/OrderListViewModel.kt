@@ -6,7 +6,7 @@ import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
-import com.hysyyl.bloodapp.activity.main.order.LoadOrderListCallBack
+import com.hysyyl.bloodapp.activity.impls.LoadListDataCallBack
 import com.hysyyl.bloodapp.activity.main.order.OrderListPresenter
 import com.hysyyl.bloodapp.model.Order
 
@@ -28,10 +28,9 @@ class OrderListViewModel(orderListPresenter: OrderListPresenter) : ViewModel() {
     }
 
     class OrderDataSourceFactory(orderListPresenter: OrderListPresenter) : DataSource.Factory<Int, Order>() {
-        var orderListDataSource = OrderListDataSource(orderListPresenter)
-
+        private val orderPresenter = orderListPresenter
         override fun create(): DataSource<Int, Order> {
-            return orderListDataSource
+            return OrderListDataSource(orderPresenter)
         }
     }
 
@@ -41,19 +40,11 @@ class OrderListViewModel(orderListPresenter: OrderListPresenter) : ViewModel() {
          * 首次加载
          */
         override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Order>) {
-            orderPresenter.getOrderList(1, 10, object : LoadOrderListCallBack {
-                override fun loadSuccess(orderList: List<Order>) {
+            orderPresenter.getOrderList(1, PAGE_SIZE, object : LoadListDataCallBack<Order> {
+                override fun onLoadListDataSuccess(orderList: List<Order>) {
                     callback.onResult(orderList, 1, 2)
                 }
             })
-//            var listOrder = mutableListOf<Order>()
-//            for (i in 1..20) {
-//                var order = Order()
-//                order.name = "第" + i + "个order"
-//                order.id = i
-//                listOrder.add(order)
-//            }
-//            callback.onResult(listOrder, 1, 2)
         }
 
         /**
@@ -61,23 +52,11 @@ class OrderListViewModel(orderListPresenter: OrderListPresenter) : ViewModel() {
          */
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Order>) {
             val pageIndex = params.key
-            orderPresenter.getOrderList(pageIndex, 10, object : LoadOrderListCallBack {
-                override fun loadSuccess(orderList: List<Order>) {
+            orderPresenter.getOrderList(pageIndex, PAGE_SIZE, object : LoadListDataCallBack<Order> {
+                override fun onLoadListDataSuccess(orderList: List<Order>) {
                     callback.onResult(orderList, pageIndex + 1)
                 }
             })
-//            LogUtils.e("当前pageIndex = " + params.key)
-//            var listOrder = mutableListOf<Order>()
-//            val pageIndex = params.key
-//            val start = (pageIndex - 1) * 20 + 1
-//            val end = (pageIndex) * 20
-//            for (i in start..end) {
-//                var order = Order()
-//                order.name = "第" + i + "个order"
-//                order.id = i
-//                listOrder.add(order)
-//            }
-//            callback.onResult(listOrder, pageIndex + 1)
         }
 
         /**

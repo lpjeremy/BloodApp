@@ -9,4 +9,6 @@
 	<string name="user_info">个人资料</string>
 	<string name="account_flow">账户流水</string>
 	<string name="goods_info">商品详情</string>
+	<string name="recharge">充值</string>
+	<string name="money">￥%s</string>
 </resources>

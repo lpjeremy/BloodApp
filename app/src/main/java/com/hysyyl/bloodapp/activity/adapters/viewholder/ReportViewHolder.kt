@@ -20,7 +20,12 @@ class ReportViewHolder(parent: ViewGroup) :
     private val txtReportTime = itemView.findViewById<TextView>(R.id.txtReportTime)
 
     fun setReportInfo(report: Report?) {
-        txtReportPatientName.text = report?.Name
+        txtReportPatientName.text = report?.PatientName
+        txtReportContent.text = report?.Goods
+        txtReportOrderNo.text = String.format("订单号:%s", report?.OrderNo)
+        txtReportTime.text = report?.CreateTime
+        txtReportPatientAge.text = "年龄"
+        txtReportPatientSex.text = "性别"
 
     }
 }

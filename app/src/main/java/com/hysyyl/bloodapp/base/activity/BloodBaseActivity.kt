@@ -4,6 +4,7 @@ import android.os.Build
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.hysyyl.bloodapp.BloodApplication
+import com.lpjeremy.libmodule.http.exception.APiExceptionKT
 import com.lpjeremy.uimodule.BaseActivity
 import kotlinx.android.synthetic.main.layout_custom_toolbar.*
 
@@ -52,4 +53,15 @@ abstract class BloodBaseActivity : BaseActivity() {
         }
     }
 
+    override fun showLoadStateView() {
+    }
+
+    override fun showLoadStateView(toast: String?) {
+    }
+
+    override fun hideLoadStateView() {
+    }
+
+    override fun loadFail(e: APiExceptionKT?) {
+    }
 }

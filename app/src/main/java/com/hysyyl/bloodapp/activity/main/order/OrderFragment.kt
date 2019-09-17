@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.adapters.OrderListAdapter
 import com.hysyyl.bloodapp.viewmodel.OrderListViewModel
-import com.lpjeremy.libmodule.http.exception.APiExceptionKT
 import com.lpjeremy.uimodule.BaseFragment
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.layout_loading_state.*
@@ -33,26 +32,24 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
     override fun initData() {
     }
 
+
     override fun showLoadStateView() {
-//        post(Runnable {
+        super.showLoadStateView()
         loadStateView.showLoading("")
-//        })
     }
 
-    override fun showLoadStateView(toast: String) {
-//        post(Runnable {
-        loadStateView.showLoadResult(toast, R.drawable.err_img)
-//        })
+    override fun showLoadStateView(toast: String?) {
+        super.showLoadStateView(toast)
+        if (toast != null) {
+            loadStateView.showLoadResult(toast, R.drawable.err_img)
+        } else {
+            loadStateView.showLoading("")
+        }
     }
 
     override fun hideLoadStateView() {
-//        post(Runnable {
+        super.hideLoadStateView()
         loadStateView.hideLoadingView()
-//        })
-    }
-
-    override fun loadFail(e: APiExceptionKT) {
-
     }
 
     override fun onDestroy() {

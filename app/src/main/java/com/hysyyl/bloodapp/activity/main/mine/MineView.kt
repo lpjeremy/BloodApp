@@ -13,6 +13,4 @@ interface MineView : MvpBaseView {
     fun setUserBalance(account: Account?)
 
     fun setSaler(saler: Saler?)
-
-    fun loadFail(e: APiExceptionKT)
 }
