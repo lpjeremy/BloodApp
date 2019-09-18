@@ -11,16 +11,17 @@ import kotlinx.android.synthetic.main.layout_loading_state.*
 class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
     private val mReportListPresenter = ReportListPresenter()
     private val mReportViewModel = ReportListViewModel(mReportListPresenter)
-    private val reportListAdapter = ReportListAdapter()
+    private var mReportListAdapter = ReportListAdapter()
 
     override fun initView() {
         mReportListPresenter.attachView(this)
-        reportRecyclerView.adapter = reportListAdapter
+
+        reportRecyclerView.adapter = mReportListAdapter
 
         reportSwipeRefreshLayout.setOnRefreshListener {
-            reportListAdapter.submitList(null)
+            mReportListAdapter?.submitList(null)
             mReportViewModel?.loadReportData("")?.observe(this, Observer {
-                reportListAdapter?.submitList(it)
+                mReportListAdapter?.submitList(it)
             })
             reportSwipeRefreshLayout.isRefreshing = false
         }
@@ -28,7 +29,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
 
     override fun initData() {
         mReportViewModel.loadReportData("").observe(this, Observer {
-            reportListAdapter.submitList(it)
+            mReportListAdapter.submitList(it)
         })
     }
 

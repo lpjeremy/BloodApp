@@ -12,24 +12,23 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
     private val orderListPresenter = OrderListPresenter()
 
     private val orderViewModel: OrderListViewModel = OrderListViewModel(orderListPresenter)
+    private val mOrderListAdapter: OrderListAdapter = OrderListAdapter()
 
     override fun initView() {
         orderListPresenter.attachView(this)
-        val adapter = OrderListAdapter()
-        orderListRecyclerView.adapter = adapter
-
-        orderViewModel.loadMoreData().observe(this, Observer { adapter.submitList(it) })
-
+        orderListRecyclerView.adapter = mOrderListAdapter
 
         orderListSwipeRefreshLayout.setOnRefreshListener {
-            adapter.submitList(null)
-            orderViewModel?.loadMoreData()?.observe(this, Observer { adapter.submitList(it) })
+            mOrderListAdapter.submitList(null)
+            orderViewModel?.loadMoreData()?.observe(this, Observer { mOrderListAdapter?.submitList(it) })
+//            orderViewModel.loadMoreData().value?.dataSource?.invalidate()
             orderListSwipeRefreshLayout.isRefreshing = false
         }
 
     }
 
     override fun initData() {
+        orderViewModel.loadMoreData().observe(this, Observer { mOrderListAdapter.submitList(it) })
     }
 
 

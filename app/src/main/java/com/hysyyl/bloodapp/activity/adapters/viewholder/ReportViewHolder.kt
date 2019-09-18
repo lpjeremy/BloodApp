@@ -26,6 +26,7 @@ class ReportViewHolder(parent: ViewGroup) :
         txtReportTime.text = report?.CreateTime
         txtReportPatientAge.text = "年龄"
         txtReportPatientSex.text = "性别"
+        txtReportStatus.text = report?.ReportState
 
     }
 }

@@ -57,7 +57,7 @@
 	        android:paddingRight="21dp"
 	        android:id="@+id/btnReport"
 	        android:layout_gravity="right"
-	        android:text="@string/app_name"
+	        android:text="查看报告"
 	        android:textColor="#ffffffff"
 	        android:background="@drawable/shape_36cfc9_radius25"
 	        android:textSize="12sp"/>
@@ -71,12 +71,12 @@
 		          android:layout_height="wrap_content"
 		          android:textColor="#ff999999"
 		          android:textSize="10sp"
-		          android:text="@string/app_name"
-		          android:id="@+id/txtReportTime"/>
+		          android:id="@+id/txtReportOrderNo"
+		          android:text="@string/app_name"/>
 		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
 		          android:textColor="#ff999999"
 		          android:textSize="10sp"
 		          android:text="@string/app_name"
-		          android:id="@+id/txtReportOrderNo"/>
+		          android:id="@+id/txtReportTime"/>
 	</LinearLayout>
 </LinearLayout>

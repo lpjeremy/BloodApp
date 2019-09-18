@@ -44,6 +44,8 @@ dependencies {
 
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "android.arch.paging:rxjava2:1.0.1"
+    //ViewModel的引入
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 //    implementation "com.android.databinding:dataBinder:1.0-rc1"
 
 //    kapt "com.android.databinding:compiler:3.1.4"//dataBinding需要的编译处理工具

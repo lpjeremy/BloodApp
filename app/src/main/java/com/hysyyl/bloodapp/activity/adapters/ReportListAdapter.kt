@@ -35,24 +35,4 @@ class ReportListAdapter : PagedListAdapter<Report, ReportViewHolder>(diffCallBac
         }
     }
 }
-//class ReportListAdapter : RecyclerView.Adapter<ReportViewHolder>() {
-//
-//    private var dataList: MutableList<Report>? = null
-//
-//    fun setReportList(list: MutableList<Report>) {
-//        dataList = list
-//        notifyDataSetChanged()
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
-//        return ReportViewHolder(parent)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return dataList?.size ?: 0
-//    }
-//
-//    override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
-//        holder.setReportInfo(dataList?.get(position))
-//    }
-//}
+
