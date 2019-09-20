@@ -1,9 +1,11 @@
 package com.hysyyl.bloodapp.activity.main.report
 
 import androidx.lifecycle.Observer
+import com.blankj.utilcode.util.LogUtils
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.adapters.ReportListAdapter
 import com.hysyyl.bloodapp.viewmodel.ReportListViewModel
+import com.hysyyl.bloodapp.views.SearchLayout
 import com.lpjeremy.uimodule.BaseFragment
 import kotlinx.android.synthetic.main.fragment_report.*
 import kotlinx.android.synthetic.main.layout_loading_state.*
@@ -12,9 +14,19 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
     private val mReportListPresenter = ReportListPresenter()
     private val mReportViewModel = ReportListViewModel(mReportListPresenter)
     private var mReportListAdapter = ReportListAdapter()
+    private var mSearchLayout: SearchLayout? = null
 
     override fun initView() {
         mReportListPresenter.attachView(this)
+
+        mSearchLayout = reportSearchView as SearchLayout
+        mSearchLayout?.setSearchHint("搜索报告")
+        mSearchLayout?.addOnSearchViewChangeSearchListener(object : SearchLayout.OnSearchListener {
+            override fun onSearch(searchKey: String) {
+                LogUtils.e(searchKey)
+            }
+        })
+
 
         reportRecyclerView.adapter = mReportListAdapter
 

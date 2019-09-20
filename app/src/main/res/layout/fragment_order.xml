@@ -2,16 +2,30 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
-
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:layout_width="match_parent"
-	                                                       android:layout_height="wrap_content"
-	                                                       android:paddingTop="10dp"
-	                                                       android:id="@+id/orderListSwipeRefreshLayout">
-		<androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
-		                                           android:layout_height="wrap_content"
-		                                           android:id="@+id/orderListRecyclerView"
-		                                           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+	              android:orientation="vertical">
+		<include layout="@layout/layout_search_view"
+		         android:id="@+id/orderSearchView"/>
+		<com.google.android.material.tabs.TabLayout android:layout_width="match_parent"
+		                                            android:layout_height="wrap_content"
+		                                            android:id="@+id/orderListTabLayout"
+		                                            app:tabBackground="@android:color/white"
+		                                            app:tabIndicatorColor="#ff36CFC9"
+		                                            app:tabIndicatorHeight="2dp"
+		                                            app:tabMode="scrollable"
+		                                            app:tabSelectedTextColor="#ff333333"
+		                                            app:tabTextColor="#ff999999"
+		                                            android:background="@android:color/white"
+		                                            android:layout_marginBottom="10dp"/>
+		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:layout_width="match_parent"
+		                                                       android:layout_height="wrap_content"
+		                                                       android:id="@+id/orderListSwipeRefreshLayout">
+			<androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+			                                           android:layout_height="wrap_content"
+			                                           android:id="@+id/orderListRecyclerView"
+			                                           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	</LinearLayout>
 
 	<include layout="@layout/layout_loading_state"/>
 
