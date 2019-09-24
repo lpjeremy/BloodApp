@@ -11,6 +11,7 @@ public interface HttpConfig {
      * http地址
      */
     interface URL {
+        String VIDEO_URL = "http://hxcuc12.com/Video/";//视频地址
 
         String BASE_URL = "http://106.14.179.118:9110/";//项目默认请求地址
 
@@ -29,6 +30,7 @@ public interface HttpConfig {
      * 接口名称
      */
     interface APINAME {
+        String getVideoList = "GetListByTag";
         String login = "api/Login/Login";
         String sendCode = "api/User/SendLoginVerifyCode";
         String getUserInfo = "api/GetMyPersonalInfo";
@@ -43,6 +45,7 @@ public interface HttpConfig {
      * 其他常量配置
      */
     interface CONSTANTS {
+        String VIDEO_Y = "Y_VIDEO";
         String HIS_BASE = "HIS_BASE";
         String HIS_USER = "HIS_USER";
         String HIS_CUSTOMER = "HIS_CUSTOMER";

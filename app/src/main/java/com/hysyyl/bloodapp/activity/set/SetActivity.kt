@@ -1,7 +1,10 @@
 package com.hysyyl.bloodapp.activity.set
 
+import android.content.Intent
 import com.hysyyl.bloodapp.R
+import com.hysyyl.bloodapp.activity.video.VideoActivity
 import com.hysyyl.bloodapp.base.activity.BloodBaseActivity
+import kotlinx.android.synthetic.main.activity_set.*
 
 /**
  * @desc:设置界面
@@ -19,7 +22,9 @@ class SetActivity : BloodBaseActivity() {
     }
 
     override fun initView() {
-
+        setVideo.setOnClickListener {
+            startActivity(Intent(mContext, VideoActivity::class.java))
+        }
     }
 
     override fun initData() {

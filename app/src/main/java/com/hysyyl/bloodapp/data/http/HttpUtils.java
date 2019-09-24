@@ -3,6 +3,8 @@ package com.hysyyl.bloodapp.data.http;
 import com.hysyyl.bloodapp.BuildConfig;
 import com.hysyyl.bloodapp.data.http.api.*;
 import com.hysyyl.bloodapp.model.*;
+import com.hysyyl.bloodapp.model.request.VideoRequest;
+import com.hysyyl.bloodapp.model.result.VideoResult;
 import com.lpjeremy.libmodule.http.HttpPresenterKT;
 import com.lpjeremy.libmodule.http.RetrofitUtils;
 import com.lpjeremy.libmodule.http.callback.HttpRequestCallBackKT;
@@ -16,12 +18,13 @@ import java.util.List;
  * @auther:lp
  * @version:1.1.6
  */
-public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, CustomerApi, OrderApi, ReportApi {
+public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, BaseApi, CustomerApi, OrderApi, ReportApi {
     BaseApiService mBaseApiService;
     UserApiService mUserApiService;
     CustomerApiService mCustomerApiService;
     OrderApiService mOrderApiService;
     ReportApiService mReportApiService;
+    VideoApiService mVideoApiService;
 
 
     private static class HttpUtilsHolder {
@@ -34,6 +37,7 @@ public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, Cust
 
     public HttpUtils() {
         RetrofitUrlManager.getInstance().setDebug(BuildConfig.DEBUG);
+        RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.VIDEO_Y, HttpConfig.URL.VIDEO_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_BASE, HttpConfig.URL.BASE_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_USER, HttpConfig.URL.USER_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_CUSTOMER, HttpConfig.URL.CUSTOMER_URL);
@@ -45,6 +49,7 @@ public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, Cust
         mCustomerApiService = RetrofitUtils.getInstance().createApiService(CustomerApiService.class);
         mOrderApiService = RetrofitUtils.getInstance().createApiService(OrderApiService.class);
         mReportApiService = RetrofitUtils.getInstance().createApiService(ReportApiService.class);
+        mVideoApiService = RetrofitUtils.getInstance().createApiService(VideoApiService.class);
     }
 
     @Override
@@ -85,5 +90,15 @@ public class HttpUtils extends HttpPresenterKT implements UserApi, BaseApi, Cust
     @Override
     public void loadReportData(String keyWords, int pageIndex, int pageSize, HttpRequestCallBackKT<List<Report>> callBack) {
         execute(mReportApiService.getReportListData(keyWords, pageIndex, pageSize), callBack);
+    }
+
+    @Override
+    public void getVideoList(VideoRequest videoRequest, HttpRequestCallBackKT<List<Video>> callBack) {
+        execute(mVideoApiService.getVideoList(videoRequest), callBack);
+    }
+
+    @Override
+    public void getVideoData(VideoRequest videoRequest, HttpRequestCallBackKT<VideoResult> callBack) {
+        executeOther(mVideoApiService.getVideoData(videoRequest), callBack);
     }
 }

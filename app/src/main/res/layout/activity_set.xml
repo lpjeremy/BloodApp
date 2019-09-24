@@ -69,5 +69,14 @@
 		           android:layout_centerVertical="true"
 		           android:layout_alignParentRight="true"/>
 	</RelativeLayout>
+	<RelativeLayout style="@style/set_item"
+	                android:id="@+id/setVideo">
+		<TextView style="@style/text_333_16"
+		          android:text="VIDEO"
+		          android:layout_centerVertical="true"/>
+		<ImageView style="@style/arrow_gray_16dp"
+		           android:layout_centerVertical="true"
+		           android:layout_alignParentRight="true"/>
+	</RelativeLayout>
 
 </LinearLayout>
