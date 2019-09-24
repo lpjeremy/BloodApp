@@ -32,17 +32,18 @@ class VideoListPresenter : BasePresenter<VideoListView>() {
 
         videoListModel.getVideoData(params, object : HttpRequestCallBackKT<VideoResult> {
             override fun onSuccess(result: VideoResult?) {
+                if (result?.data != null && result.data.isNotEmpty()) {
+                    if (result != null) {
+                        callBack.onLoadListDataSuccess(result.data)
+                    }
+                } else {
+                    mView.showLoadStateView("没有视频数据")
+                }
+
                 if (pageIndex > 1) {
                     mView.hideLoading()
                 } else {
-                    if (result?.data != null && result.data.isNotEmpty()) {
-                        if (result != null) {
-                            callBack.onLoadListDataSuccess(result.data)
-                        }
-                        mView.hideLoadStateView()
-                    } else {
-                        mView.showLoadStateView("没有视频数据")
-                    }
+                    mView.hideLoadStateView()
                 }
             }
 
