@@ -4,15 +4,16 @@ import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.LogUtils
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.adapters.ReportListAdapter
-import com.hysyyl.bloodapp.viewmodel.ReportListViewModel
+import com.hysyyl.bloodapp.viewmodel.base.ListViewBaseModel
 import com.hysyyl.bloodapp.views.SearchLayout
 import com.lpjeremy.uimodule.BaseFragment
 import kotlinx.android.synthetic.main.fragment_report.*
 import kotlinx.android.synthetic.main.layout_loading_state.*
 
 class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
-    private val mReportListPresenter = ReportListPresenter()
-    private val mReportViewModel = ReportListViewModel(mReportListPresenter)
+    private val mReportListPresenter = ReportListPresenter(ReportListModel())
+    private val mListViewModel = ListViewBaseModel(mReportListPresenter)
+
     private var mReportListAdapter = ReportListAdapter()
     private var mSearchLayout: SearchLayout? = null
 
@@ -32,7 +33,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
 
         reportSwipeRefreshLayout.setOnRefreshListener {
             mReportListAdapter?.submitList(null)
-            mReportViewModel?.loadReportData("")?.observe(this, Observer {
+            mListViewModel?.loadListData(mSearchLayout?.getSearchValue())?.observe(this, Observer {
                 mReportListAdapter?.submitList(it)
             })
             reportSwipeRefreshLayout.isRefreshing = false
@@ -40,7 +41,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
     }
 
     override fun initData() {
-        mReportViewModel.loadReportData("").observe(this, Observer {
+        mListViewModel.loadListData(mSearchLayout?.getSearchValue()).observe(this, Observer {
             mReportListAdapter.submitList(it)
         })
     }

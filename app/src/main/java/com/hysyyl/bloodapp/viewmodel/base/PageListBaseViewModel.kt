@@ -1,9 +1,9 @@
-package com.hysyyl.bloodapp.viewmodel
+package com.hysyyl.bloodapp.viewmodel.base
 
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 
-open class PageListBaseViewModel : ViewModel() {
+ open class PageListBaseViewModel : ViewModel() {
 
     val pageConfig = PagedList.Config.Builder()
         .setPageSize(PAGE_SIZE) //设置每页加载的数量

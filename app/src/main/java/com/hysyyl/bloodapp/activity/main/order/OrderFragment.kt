@@ -5,11 +5,12 @@ import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.tabs.TabLayout
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.adapters.OrderListAdapter
-import com.hysyyl.bloodapp.viewmodel.OrderListViewModel
+import com.hysyyl.bloodapp.viewmodel.base.ListViewBaseModel
 import com.hysyyl.bloodapp.views.SearchLayout
 import com.lpjeremy.uimodule.BaseFragment
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.layout_loading_state.*
+
 /**
  * @desc:订单列表
  * @date:2019/9/19 11:35
@@ -17,14 +18,16 @@ import kotlinx.android.synthetic.main.layout_loading_state.*
  * @version:1.1.6
  */
 class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
-    private val orderListPresenter = OrderListPresenter()
 
-    private val orderViewModel: OrderListViewModel = OrderListViewModel(orderListPresenter)
+    private val mOrderListPresenter = OrderListPresenter(OrderListModel())
+    private val mListViewBaseModel = ListViewBaseModel(mOrderListPresenter)
+
     private val mOrderListAdapter: OrderListAdapter = OrderListAdapter()
     private var mSearchLayout: SearchLayout? = null
 
     override fun initView() {
-        orderListPresenter.attachView(this)
+        mOrderListPresenter.attachView(this)
+
         mSearchLayout = orderSearchView as SearchLayout
         mSearchLayout?.showCallService()
         mSearchLayout?.setSearchHint("患者姓名/订单号/手机号")
@@ -54,15 +57,16 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
 
         orderListSwipeRefreshLayout.setOnRefreshListener {
             mOrderListAdapter.submitList(null)
-            orderViewModel?.loadMoreData()?.observe(this, Observer { mOrderListAdapter?.submitList(it) })
-//            orderViewModel.loadMoreData().value?.dataSource?.invalidate()
+            mListViewBaseModel?.loadListData(mSearchLayout?.getSearchValue())?.observe(this, Observer { mOrderListAdapter.submitList(it) })
             orderListSwipeRefreshLayout.isRefreshing = false
         }
 
     }
 
     override fun initData() {
-        orderViewModel.loadMoreData().observe(this, Observer { mOrderListAdapter.submitList(it) })
+        mListViewBaseModel.loadListData(mSearchLayout?.getSearchValue()).observe(this, Observer {
+            mOrderListAdapter.submitList(it)
+        })
     }
 
 
@@ -87,6 +91,6 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
 
     override fun onDestroy() {
         super.onDestroy()
-        orderListPresenter.detachView()
+        mOrderListPresenter.detachView()
     }
 }

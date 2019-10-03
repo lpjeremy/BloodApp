@@ -8,6 +8,7 @@ import androidx.paging.PagedList
 import com.hysyyl.bloodapp.activity.impls.LoadListDataCallBack
 import com.hysyyl.bloodapp.activity.video.VideoListPresenter
 import com.hysyyl.bloodapp.model.Video
+import com.hysyyl.bloodapp.viewmodel.base.PageListBaseViewModel
 
 class VideoListViewModel(private val videoListPresenter: VideoListPresenter) : PageListBaseViewModel() {
 

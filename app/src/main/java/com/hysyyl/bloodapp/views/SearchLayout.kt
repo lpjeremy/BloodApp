@@ -98,7 +98,7 @@ class SearchLayout : LinearLayout {
      *
      * @return
      */
-    fun getSearchValue(): String {
+    open fun getSearchValue(): String {
         return searchViewEdtSearch.text.toString().trim()
     }
 
