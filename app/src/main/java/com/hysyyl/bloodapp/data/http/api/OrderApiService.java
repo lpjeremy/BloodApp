@@ -17,6 +17,6 @@ public interface OrderApiService {
 
     @Headers({DOMAIN_NAME_HEADER + HttpConfig.CONSTANTS.HIS_ORDER})
     @GET(HttpConfig.APINAME.getUserOrderList)
-    Observable<BaseResult<List<Order>>> getUserOrderList(@Query("keyWords") String keyWords, @Query("orderStatus") int orderStatus, @Query("pageIndex") int pageIndex, @Query("pageSize") int pageSize);
+    Observable<BaseResult<List<Order>>> getUserOrderList(@Query("keyWords") String keyWords, @Query("orderStatus") String orderStatus, @Query("pageIndex") int pageIndex, @Query("pageSize") int pageSize);
 
 }

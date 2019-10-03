@@ -1,7 +1,6 @@
 package com.hysyyl.bloodapp.activity.main.report
 
 import androidx.lifecycle.Observer
-import com.blankj.utilcode.util.LogUtils
 import com.hysyyl.bloodapp.R
 import com.hysyyl.bloodapp.activity.adapters.ReportListAdapter
 import com.hysyyl.bloodapp.viewmodel.base.ListViewBaseModel
@@ -17,6 +16,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
     private var mReportListAdapter = ReportListAdapter()
     private var mSearchLayout: SearchLayout? = null
 
+
     override fun initView() {
         mReportListPresenter.attachView(this)
 
@@ -24,7 +24,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
         mSearchLayout?.setSearchHint("搜索报告")
         mSearchLayout?.addOnSearchViewChangeSearchListener(object : SearchLayout.OnSearchListener {
             override fun onSearch(searchKey: String) {
-                LogUtils.e(searchKey)
+                searchData()
             }
         })
 
@@ -33,19 +33,20 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), ReportListView {
 
         reportSwipeRefreshLayout.setOnRefreshListener {
             mReportListAdapter?.submitList(null)
-            mListViewModel?.loadListData(mSearchLayout?.getSearchValue())?.observe(this, Observer {
-                mReportListAdapter?.submitList(it)
-            })
+            searchData()
             reportSwipeRefreshLayout.isRefreshing = false
         }
     }
 
     override fun initData() {
-        mListViewModel.loadListData(mSearchLayout?.getSearchValue()).observe(this, Observer {
+        searchData()
+    }
+
+    private fun searchData() {
+        mListViewModel.loadListData(mSearchLayout?.getSearchValue(), null).observe(this, Observer {
             mReportListAdapter.submitList(it)
         })
     }
-
 
     override fun showLoadStateView() {
         super.showLoadStateView()

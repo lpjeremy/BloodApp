@@ -25,6 +25,8 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
     private val mOrderListAdapter: OrderListAdapter = OrderListAdapter()
     private var mSearchLayout: SearchLayout? = null
 
+    private val params = mutableListOf<String>()
+
     override fun initView() {
         mOrderListPresenter.attachView(this)
 
@@ -33,7 +35,7 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
         mSearchLayout?.setSearchHint("患者姓名/订单号/手机号")
         mSearchLayout?.addOnSearchViewChangeSearchListener(object : SearchLayout.OnSearchListener {
             override fun onSearch(searchKey: String) {
-                LogUtils.e(searchKey)
+                searchData()
             }
         })
 
@@ -50,6 +52,9 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
 
             override fun onTabSelected(p0: TabLayout.Tab?) {
                 showCheckToast("当前选择是" + p0?.position)
+                params.clear()
+                params.add(0, p0?.position.toString())
+                searchData()
             }
         })
 
@@ -57,14 +62,19 @@ class OrderFragment : BaseFragment(R.layout.fragment_order), OrderListView {
 
         orderListSwipeRefreshLayout.setOnRefreshListener {
             mOrderListAdapter.submitList(null)
-            mListViewBaseModel?.loadListData(mSearchLayout?.getSearchValue())?.observe(this, Observer { mOrderListAdapter.submitList(it) })
+            searchData()
             orderListSwipeRefreshLayout.isRefreshing = false
         }
 
     }
 
     override fun initData() {
-        mListViewBaseModel.loadListData(mSearchLayout?.getSearchValue()).observe(this, Observer {
+        params.add(0, "0")
+        searchData()
+    }
+
+    private fun searchData() {
+        mListViewBaseModel.loadListData(mSearchLayout?.getSearchValue(), params).observe(this, Observer {
             mOrderListAdapter.submitList(it)
         })
     }

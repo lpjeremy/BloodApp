@@ -12,7 +12,13 @@ open class ListViewPresenter<T>(listViewModel: ListViewModel<T>) : BasePresenter
     /**
      * 加载数据
      */
-    fun loadData(keyWords: String?, pageIndex: Int, pageSize: Int, callBack: LoadListDataCallBack<T>) {
+    fun loadData(
+        keyWords: String?,
+        pageIndex: Int,
+        pageSize: Int,
+        params: MutableList<String>?,
+        callBack: LoadListDataCallBack<T>
+    ) {
         if (!isViewAttached) {
             ToastUtils.showShort("未绑定view")
             return
@@ -22,7 +28,7 @@ open class ListViewPresenter<T>(listViewModel: ListViewModel<T>) : BasePresenter
         } else {
             mView.showLoadStateView()
         }
-        mListViewModel.getListData(keyWords, pageIndex, pageSize, object : HttpRequestCallBackKT<List<T>> {
+        mListViewModel.getListData(keyWords, params, pageIndex, pageSize, object : HttpRequestCallBackKT<List<T>> {
             override fun onSuccess(result: List<T>?) {
                 if (result != null) {
                     callBack.onLoadListDataSuccess(result)

@@ -83,7 +83,7 @@ public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, Bas
     }
 
     @Override
-    public void getUserOrderList(String keyWords, int orderStatus, int pageIndex, int pageSize, HttpRequestCallBackKT<List<Order>> callBack) {
+    public void getUserOrderList(String keyWords, String orderStatus, int pageIndex, int pageSize, HttpRequestCallBackKT<List<Order>> callBack) {
         execute(mOrderApiService.getUserOrderList(keyWords, orderStatus, pageIndex, pageSize), callBack);
     }
 
