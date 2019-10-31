@@ -48,4 +48,30 @@ open class HttpPresenterKT {
                 }
             })
     }
+
+    fun <T> executeOther(observable: Observable<T>, callBack: HttpRequestCallBackKT<T>) {
+        if (!NetworkUtils.isConnected()) {
+            val failApi = APiExceptionKT(ApiCode.Request.NETWORK_ERROR, "网络连接异常")
+            callBack.onFail(failApi)
+            return
+        }
+        observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : Observer<T> {
+                override fun onComplete() {
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onNext(t: T) {
+                    callBack.onSuccess(t)
+                }
+
+                override fun onError(e: Throwable) {
+                    val apie = APiExceptionKT(ApiCode.Request.UNKNOWN, e.message as String)
+                    callBack.onFail(apie)
+                }
+            })
+    }
 }

@@ -1,5 +1,7 @@
 package com.lpjeremy.uimodule.mvp;
 
+import com.lpjeremy.libmodule.http.exception.APiExceptionKT;
+
 public interface MvpBaseView {
     /**
      * 显示loading
@@ -49,5 +51,23 @@ public interface MvpBaseView {
      */
     void showCheckToast(int toastId);
 
+    /**
+     * 显示初始化加载view
+     */
+    void showLoadStateView();
+    /**
+     * 显示初始化加载view 带提示文本
+     */
+    void showLoadStateView(String toast);
 
+    /**
+     * 隐藏初始化加载view
+     */
+    void hideLoadStateView();
+
+    /**
+     * 数据加载失败
+     * @param e
+     */
+    void loadFail(APiExceptionKT e);
 }

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.blankj.utilcode.util.ToastUtils
+import com.lpjeremy.libmodule.http.exception.APiExceptionKT
 import com.lpjeremy.uimodule.dialog.ProgressDialog
 import com.lpjeremy.uimodule.impl.IActivity
 import com.lpjeremy.uimodule.mvp.Err
@@ -199,5 +200,18 @@ abstract class BaseFragment(contentLayoutId: Int) : Fragment(contentLayoutId), M
 
     override fun showCheckToast(toastId: Int) {
         showToast(toastId)
+    }
+
+    override fun showLoadStateView() {
+    }
+
+    override fun showLoadStateView(toast: String?) {
+    }
+
+    override fun hideLoadStateView() {
+    }
+
+    override fun loadFail(e: APiExceptionKT?) {
+        hideLoading()
     }
 }
