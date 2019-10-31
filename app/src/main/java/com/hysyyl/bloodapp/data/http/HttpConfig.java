@@ -11,7 +11,7 @@ public interface HttpConfig {
      * http地址
      */
     interface URL {
-        String VIDEO_URL = "http://hxcuc12.com/Video/";//视频地址
+        String VIDEO_URL = "http://www.hxcuc12.com/Video/";//视频地址
 
         String BASE_URL = "http://106.14.179.118:9110/";//项目默认请求地址
 
