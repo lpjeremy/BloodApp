@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import com.blankj.utilcode.util.KeyboardUtils
 import com.hysyyl.bloodapp.R
+import com.hysyyl.bloodapp.activity.login.register.RegisterActivity
 import com.hysyyl.bloodapp.activity.main.MainActivity
 import com.hysyyl.bloodapp.base.activity.BloodBaseActivity
 import com.hysyyl.bloodapp.model.LoginResult
@@ -95,7 +96,7 @@ class LoginActivity : BloodBaseActivity(), View.OnClickListener, LoginView {
                 loginPresenter.getCode(edtPhone.text.toString())
             }
             txtForgotPwd -> {
-                showToast("忘记密码")
+                startActivity(Intent(mContext,RegisterActivity::class.java))
             }
             txtChangePhone -> {
                 showToast("更换手机号")
@@ -113,7 +114,9 @@ class LoginActivity : BloodBaseActivity(), View.OnClickListener, LoginView {
     }
 
     override fun loginFail(failApi: APiExceptionKT) {
-        showToast("登录失败")
+        showToast("登录失败"+failApi.msg)
+        val intent = Intent(mContext, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }

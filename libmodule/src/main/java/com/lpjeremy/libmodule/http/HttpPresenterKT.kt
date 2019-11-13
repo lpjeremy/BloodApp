@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.NetworkUtils
 import com.lpjeremy.libmodule.http.callback.HttpRequestCallBackKT
 import com.lpjeremy.libmodule.http.exception.APiExceptionKT
 import com.lpjeremy.libmodule.http.model.BaseResult
+import com.lpjeremy.libmodule.http.model.BaseResultJava
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -45,6 +46,41 @@ open class HttpPresenterKT {
                 override fun onError(e: Throwable) {
                     val apie = APiExceptionKT(ApiCode.Request.UNKNOWN, e.message as String)
                     callBack.onFail(apie)
+                }
+            })
+    }
+
+    fun <T> executeJava(observable: Observable<BaseResultJava<T>>, callBack: HttpRequestCallBackKT<T>) {
+        if (!NetworkUtils.isConnected()) {
+            val failApi = APiExceptionKT(ApiCode.Request.NETWORK_ERROR, "网络连接异常")
+            callBack.onFail(failApi)
+            return
+        }
+//        observable.compose(ObservableTransformer() { upstream ->
+//            upstream.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//        })
+        observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : Observer<BaseResultJava<T>> {
+                override fun onComplete() {
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onNext(t: BaseResultJava<T>) {
+                    if (t.code==1) {
+                        callBack.onSuccess(t.data)
+                    } else {
+                        var failApi = APiExceptionKT(t.code, t.msg)
+                        callBack.onFail(failApi)
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    val api = APiExceptionKT(ApiCode.Request.UNKNOWN, e.message as String)
+                    callBack.onFail(api)
                 }
             })
     }

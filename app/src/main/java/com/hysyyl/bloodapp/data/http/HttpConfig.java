@@ -11,6 +11,8 @@ public interface HttpConfig {
      * http地址
      */
     interface URL {
+        String LP_ACCOUNT_URL = "http://192.168.190.47:8080/";
+
         String VIDEO_URL = "http://www.hxcuc12.com/Video/";//视频地址
 
         String BASE_URL = "http://106.14.179.118:9110/";//项目默认请求地址
@@ -39,12 +41,16 @@ public interface HttpConfig {
         String checkBindWeChat = "api/Login/IsBindWxOpenid";
         String getUserOrderList = "api/Order/GetUserOrderList";
         String customerReportSearch = "api/CustomerReportSearch";
+
+        String lpLogin = "accountApi/login";
     }
 
     /**
      * 其他常量配置
      */
     interface CONSTANTS {
+        //自己写的账户部分接口
+        String LP_ACCOUNT = "LP_ACCOUNT";
         String VIDEO_Y = "Y_VIDEO";
         String HIS_BASE = "HIS_BASE";
         String HIS_USER = "HIS_USER";

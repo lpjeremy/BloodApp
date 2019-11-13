@@ -18,13 +18,15 @@ import java.util.List;
  * @auther:lp
  * @version:1.1.6
  */
-public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, BaseApi, CustomerApi, OrderApi, ReportApi {
+public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, BaseApi, CustomerApi, OrderApi, ReportApi,AccountApi {
     BaseApiService mBaseApiService;
     UserApiService mUserApiService;
     CustomerApiService mCustomerApiService;
     OrderApiService mOrderApiService;
     ReportApiService mReportApiService;
     VideoApiService mVideoApiService;
+    AccountApiService mAccountApiService;
+
 
 
     private static class HttpUtilsHolder {
@@ -37,6 +39,8 @@ public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, Bas
 
     public HttpUtils() {
         RetrofitUrlManager.getInstance().setDebug(BuildConfig.DEBUG);
+
+        RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.LP_ACCOUNT, HttpConfig.URL.LP_ACCOUNT_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.VIDEO_Y, HttpConfig.URL.VIDEO_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_BASE, HttpConfig.URL.BASE_URL);
         RetrofitUrlManager.getInstance().putDomain(HttpConfig.CONSTANTS.HIS_USER, HttpConfig.URL.USER_URL);
@@ -50,6 +54,7 @@ public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, Bas
         mOrderApiService = RetrofitUtils.getInstance().createApiService(OrderApiService.class);
         mReportApiService = RetrofitUtils.getInstance().createApiService(ReportApiService.class);
         mVideoApiService = RetrofitUtils.getInstance().createApiService(VideoApiService.class);
+        mAccountApiService = RetrofitUtils.getInstance().createApiService(AccountApiService.class);
     }
 
     @Override
@@ -100,5 +105,10 @@ public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, Bas
     @Override
     public void getVideoData(VideoRequest videoRequest, HttpRequestCallBackKT<VideoResult> callBack) {
         executeOther(mVideoApiService.getVideoData(videoRequest), callBack);
+    }
+
+    @Override
+    public void register(String userName, String password, HttpRequestCallBackKT<String> callBack) {
+        executeJava(mAccountApiService.register(userName,password),callBack);
     }
 }
