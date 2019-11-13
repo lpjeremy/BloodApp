@@ -42,7 +42,8 @@ public interface HttpConfig {
         String getUserOrderList = "api/Order/GetUserOrderList";
         String customerReportSearch = "api/CustomerReportSearch";
 
-        String lpLogin = "accountApi/login";
+        String lpRegister = "accountApi/register";
+        String lpRegisterPost = "accountApi/registerPost";
     }
 
     /**

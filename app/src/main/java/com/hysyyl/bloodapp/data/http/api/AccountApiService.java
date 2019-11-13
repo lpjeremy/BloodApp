@@ -2,12 +2,15 @@ package com.hysyyl.bloodapp.data.http.api;
 
 import com.hysyyl.bloodapp.data.http.HttpConfig;
 import com.hysyyl.bloodapp.model.LoginResult;
+import com.hysyyl.bloodapp.model.request.RegisterParams;
 import com.lpjeremy.libmodule.http.model.BaseResult;
 import com.lpjeremy.libmodule.http.model.BaseResultJava;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 import static me.jessyan.retrofiturlmanager.RetrofitUrlManager.DOMAIN_NAME_HEADER;
@@ -27,7 +30,11 @@ public interface AccountApiService {
      * @return
      */
     @Headers({DOMAIN_NAME_HEADER + HttpConfig.CONSTANTS.LP_ACCOUNT})
-    @GET(HttpConfig.APINAME.lpLogin)
+    @GET(HttpConfig.APINAME.lpRegister)
     Observable<BaseResultJava<String>> register(@Query("userName") String userName, @Query("password") String password);
+
+    @Headers({DOMAIN_NAME_HEADER + HttpConfig.CONSTANTS.LP_ACCOUNT})
+    @POST(HttpConfig.APINAME.lpRegisterPost)
+    Observable<BaseResultJava<String>> register(@Body RegisterParams params);
 
 }

@@ -3,6 +3,7 @@ package com.hysyyl.bloodapp.data.http;
 import com.hysyyl.bloodapp.BuildConfig;
 import com.hysyyl.bloodapp.data.http.api.*;
 import com.hysyyl.bloodapp.model.*;
+import com.hysyyl.bloodapp.model.request.RegisterParams;
 import com.hysyyl.bloodapp.model.request.VideoRequest;
 import com.hysyyl.bloodapp.model.result.VideoResult;
 import com.lpjeremy.libmodule.http.HttpPresenterKT;
@@ -110,5 +111,10 @@ public class HttpUtils extends HttpPresenterKT implements VideoApi, UserApi, Bas
     @Override
     public void register(String userName, String password, HttpRequestCallBackKT<String> callBack) {
         executeJava(mAccountApiService.register(userName,password),callBack);
+    }
+
+    @Override
+    public void register(RegisterParams params, HttpRequestCallBackKT<String> callBack) {
+        executeJava(mAccountApiService.register(params),callBack);
     }
 }
